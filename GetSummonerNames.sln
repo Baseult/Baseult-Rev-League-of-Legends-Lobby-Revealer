@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetSummonerNames", "GetSummonerNames\GetSummonerNames.csproj", "{DF531B12-AC81-41A1-8297-B369B482E9E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Debug|x64.ActiveCfg = Debug|x64
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Debug|x64.Build.0 = Debug|x64
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Release|x64.ActiveCfg = Release|x64
+		{DF531B12-AC81-41A1-8297-B369B482E9E0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6F4D298-9AAC-46D4-AC53-D7730B79BC2A}
+	EndGlobalSection
+EndGlobal
