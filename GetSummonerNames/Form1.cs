@@ -171,14 +171,21 @@ namespace GetSummonerNames
             var deserialized = JsonConvert.DeserializeObject<Players>(req);
             var count = 0;
 
+            int totalPlayers = deserialized.Participants.Count;
             foreach (var player in deserialized.Participants)
             {
                 count++;
                 PlayerList.Add(count, player.Name);
                 Console.WriteLine(player.Name);
                 Linklist.Add(count, Mobalytics + _myregion + "/" + player.Name + "/overview");
-                _uggplayers += player.Name + ", ";
+                
+                _uggplayers += player.Name;
+                if (count != totalPlayers) // Check if it's not the last iteration
+                {
+                    _uggplayers += ", ";
+                }
             }
+
 
             if (PlayerList.Count >= 1)
             {
