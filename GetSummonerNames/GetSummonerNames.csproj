@@ -106,12 +106,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\off.png" />
+    <None Include="Resources\offx.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\on.png" />
+    <None Include="Resources\onx.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

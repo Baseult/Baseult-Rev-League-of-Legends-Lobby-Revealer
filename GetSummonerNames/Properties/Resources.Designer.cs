@@ -63,9 +63,9 @@ namespace GetSummonerNames.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap off {
+        internal static System.Drawing.Bitmap offx {
             get {
-                object obj = ResourceManager.GetObject("off", resourceCulture);
+                object obj = ResourceManager.GetObject("offx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace GetSummonerNames.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap on {
+        internal static System.Drawing.Bitmap onx {
             get {
-                object obj = ResourceManager.GetObject("on", resourceCulture);
+                object obj = ResourceManager.GetObject("onx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

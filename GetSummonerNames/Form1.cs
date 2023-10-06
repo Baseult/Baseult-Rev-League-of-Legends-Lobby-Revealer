@@ -142,7 +142,6 @@ namespace GetSummonerNames
             }
             catch
             {
-                MessageBox.Show("Request failed - No Connection...", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
             }
         }
@@ -178,7 +177,7 @@ namespace GetSummonerNames
                 PlayerList.Add(count, player.Name);
                 Console.WriteLine(player.Name);
                 Linklist.Add(count, Mobalytics + _myregion + "/" + player.Name + "/overview");
-                
+
                 _uggplayers += player.Name;
                 if (count != totalPlayers) // Check if it's not the last iteration
                 {
@@ -186,21 +185,22 @@ namespace GetSummonerNames
                 }
             }
 
-
             if (PlayerList.Count >= 1)
             {
                 linkLabel1.Text = PlayerList[1];
                 linkLabel1.Enabled = true;
 
                 label1.Text = "Found Players in Lobby...";
-                BackgroundImage = Resources.on;
+                BackgroundImage = Resources.onx;
                 button2.Enabled = true;
+                button3.Enabled = true;
             }
             else
             {
-                label1.Text = "No Players found...";
-                BackgroundImage = Resources.off;
+                label1.Text = "Waiting for Lobby...";
+                BackgroundImage = Resources.offx;
                 button2.Enabled = false;
+                button3.Enabled = false;
             }
 
             if (PlayerList.Count >= 2)
@@ -233,14 +233,26 @@ namespace GetSummonerNames
             label1.Text = "Connecting to LCU...";
             get_lcu();
             label1.Text = "Searching for Players...";
-            _myregion = Getregion(MakeRequest("GET", "/riotclient/get_region_locale" /*Public Riot API request*/, true));
+            _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
             Getplayers(MakeRequest( "GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            label1.Text = "Opening U.GG...";
-            Process.Start("https://u.gg/multisearch?summoners=" + _uggplayers + "&region=" + _myregion.ToLower() + "1");
+            if (statbox.SelectedItem.ToString() == "U.GG")
+                Process.Start("https://u.gg/multisearch?summoners=" + _uggplayers + "&region=" + _myregion.ToLower() + "1");
+
+            if (statbox.SelectedItem.ToString() == "TRACKER")
+                Process.Start("https://tracker.gg/lol/multisearch/" +_myregion + "/" +  _uggplayers);
+
+            if (statbox.SelectedItem.ToString() == "DEEPLOL")
+                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
+
+            if (statbox.SelectedItem.ToString() == "OP.GG")
+                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
+
+            if (statbox.SelectedItem.ToString() == "PORO.GG")
+                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -255,7 +267,7 @@ namespace GetSummonerNames
                 label1.Text = "Dodged Lobby...";
 
                 Resetlabel();
-                BackgroundImage = Resources.off;
+                BackgroundImage = Resources.offx;
             }
 
         }
@@ -272,6 +284,8 @@ namespace GetSummonerNames
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CheckForIllegalCrossThreadCalls = false;
+
             var dialogResult = MessageBox.Show("Hey, there might be an update for my program.\r\n\r\nIf there is, you can download it from Unknowncheats or my Discord. To check out for a possible update and get redirected to UnknownCheats, press Yes.\r\n\r\n(If you obtained this program from a source other than UnknownCheats or my Discord server, it was not uploaded by me.)", "Baseult-Rev Information!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
@@ -279,6 +293,8 @@ namespace GetSummonerNames
             }
 
             Text = RandomString(16);
+
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -316,6 +332,24 @@ namespace GetSummonerNames
             Close();
         }
 
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                try
+                {
+                    get_lcu();
+                    _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
+                    Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+                }
+                catch
+                {
+
+                }
+
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
     }
 
 }
