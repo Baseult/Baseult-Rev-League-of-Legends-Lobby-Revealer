@@ -204,6 +204,10 @@ namespace GetSummonerNames
             // statbox
             // 
             this.statbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+<<<<<<< Updated upstream
+=======
+            this.statbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+>>>>>>> Stashed changes
             this.statbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.statbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statbox.ForeColor = System.Drawing.Color.Cyan;
@@ -218,7 +222,10 @@ namespace GetSummonerNames
             this.statbox.Name = "statbox";
             this.statbox.Size = new System.Drawing.Size(117, 28);
             this.statbox.TabIndex = 12;
+<<<<<<< Updated upstream
             this.statbox.Text = "OP.GG";
+=======
+>>>>>>> Stashed changes
             // 
             // backgroundWorker1
             // 
@@ -229,7 +236,11 @@ namespace GetSummonerNames
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+<<<<<<< Updated upstream
             this.BackgroundImage = global::GetSummonerNames.Properties.Resources.offx;
+=======
+            this.BackgroundImage = global::GetSummonerNames.Properties.Resources.off3;
+>>>>>>> Stashed changes
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(430, 385);
             this.Controls.Add(this.statbox);
