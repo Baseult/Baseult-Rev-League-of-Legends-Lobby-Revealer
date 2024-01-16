@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -46,7 +46,7 @@ namespace GetSummonerNames
         private string _playernames;
         private const string Mobalytics = "https://app.mobalytics.gg/lol/profile/";
         private bool waitforreset = false;
-
+        private string _uggplayers; // might be useless but i couldnt find a declaration for a string _uggplayers so i just shoved one into this class :trollge:
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;
 
@@ -121,7 +121,7 @@ namespace GetSummonerNames
                 int port;
                 string token;
 
-                if(client)
+                if (client)
                 {
                     port = Convert.ToInt32(Client["port"]);
                     token = Client["token"];
@@ -183,137 +183,148 @@ namespace GetSummonerNames
                 Console.WriteLine(player.Name);
                 Linklist.Add(count, Mobalytics + _myregion + "/" + player.Name + "/overview");
 
-<<<<<<< Updated upstream
+
                 _uggplayers += player.Name;
                 if (count != totalPlayers) // Check if it's not the last iteration
                 {
                     _uggplayers += ", ";
-=======
-                _riotnames += player.Name;
-                _playernames += player.game_name + "%23" + player.game_tag;
-                if (count != totalPlayers) // Check if it's not the last iteration
+
+                    _riotnames += player.Name;
+                    _playernames += player.game_name + "%23" + player.game_tag;
+                    if (count != totalPlayers) // Check if it's not the last iteration
+                    {
+                        _riotnames += ", ";
+                        _playernames += ", ";
+
+                    }
+                }
+
+                if (PlayerList.Count >= 1)
                 {
-                    _riotnames += ", ";
-                    _playernames += ", ";
->>>>>>> Stashed changes
+                    linkLabel1.Text = PlayerList[1];
+                    linkLabel1.Enabled = true;
+
+                    label1.Text = "Found Players in Lobby...";
+
+                    BackgroundImage = Resources.onx;
+
+                    BackgroundImage = Resources.on3;
+
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                }
+                else
+                {
+                    label1.Text = "Waiting for Lobby...";
+
+                    BackgroundImage = Resources.offx;
+
+                    BackgroundImage = Resources.off3;
+
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                }
+
+                if (PlayerList.Count >= 2)
+                {
+                    linkLabel2.Text = PlayerList[2];
+                    linkLabel2.Enabled = true;
+                }
+
+                if (PlayerList.Count >= 3)
+                {
+                    linkLabel3.Text = PlayerList[3];
+                    linkLabel3.Enabled = true;
+                }
+
+                if (PlayerList.Count >= 4)
+                {
+                    linkLabel4.Text = PlayerList[4];
+                    linkLabel4.Enabled = true;
+                }
+
+                if (PlayerList.Count >= 5)
+                {
+                    linkLabel5.Text = PlayerList[5];
+                    linkLabel5.Enabled = true;
                 }
             }
-
-            if (PlayerList.Count >= 1)
-            {
-                linkLabel1.Text = PlayerList[1];
-                linkLabel1.Enabled = true;
-
-                label1.Text = "Found Players in Lobby...";
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.onx;
-=======
-                BackgroundImage = Resources.on3;
->>>>>>> Stashed changes
-                button2.Enabled = true;
-                button3.Enabled = true;
-            }
-            else
-            {
-                label1.Text = "Waiting for Lobby...";
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.offx;
-=======
-                BackgroundImage = Resources.off3;
->>>>>>> Stashed changes
-                button2.Enabled = false;
-                button3.Enabled = false;
-            }
-
-            if (PlayerList.Count >= 2)
-            {
-                linkLabel2.Text = PlayerList[2];
-                linkLabel2.Enabled = true;
-            }
-
-            if (PlayerList.Count >= 3)
-            {
-                linkLabel3.Text = PlayerList[3];
-                linkLabel3.Enabled = true;
-            }
-
-            if (PlayerList.Count >= 4)
-            {
-                linkLabel4.Text = PlayerList[4];
-                linkLabel4.Enabled = true;
-            }
-
-            if (PlayerList.Count >= 5)
-            {
-                linkLabel5.Text = PlayerList[5];
-                linkLabel5.Enabled = true;
-            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = "Connecting to LCU...";
-            get_lcu();
-            label1.Text = "Searching for Players...";
-            _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
-            Getplayers(MakeRequest( "GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
-        }
+            private void button1_Click(object sender, EventArgs e)
+            {
+                label1.Text = "Connecting to LCU...";
+                get_lcu();
+                label1.Text = "Searching for Players...";
+                _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
+                Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+            }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (statbox.SelectedItem.ToString() == "U.GG")
-<<<<<<< Updated upstream
+            {
                 Process.Start("https://u.gg/multisearch?summoners=" + _uggplayers + "&region=" + _myregion.ToLower() + "1");
 
-            if (statbox.SelectedItem.ToString() == "TRACKER")
-                Process.Start("https://tracker.gg/lol/multisearch/" +_myregion + "/" +  _uggplayers);
+                if (statbox.SelectedItem.ToString() == "TRACKER")
+                {
+                    Process.Start("https://tracker.gg/lol/multisearch/" + _myregion + "/" + _uggplayers);
+                }
+                if (statbox.SelectedItem.ToString() == "DEEPLOL")
+                {
+                    Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
+                }
+                if (statbox.SelectedItem.ToString() == "OP.GG")
+                {
+                    Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
+                }
+                if (statbox.SelectedItem.ToString() == "PORO.GG")
+                {
+                    Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
+                }
+                
+                Process.Start("https://u.gg/multisearch?summoners=" + _playernames.Replace("%23", "-") + "&region=" + _myregion.ToLower() + "1");
 
-            if (statbox.SelectedItem.ToString() == "DEEPLOL")
-                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
-
-            if (statbox.SelectedItem.ToString() == "OP.GG")
-                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
-
-            if (statbox.SelectedItem.ToString() == "PORO.GG")
-                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
-=======
-                Process.Start("https://u.gg/multisearch?summoners=" + _playernames.Replace("%23","-") + "&region=" + _myregion.ToLower() + "1");
-
-            if (statbox.SelectedItem.ToString() == "TRACKER")
-                Process.Start("https://tracker.gg/lol/multisearch/" +_myregion + "/" +  _playernames);
-
-            if (statbox.SelectedItem.ToString() == "DEEPLOL")
-                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _playernames);
-
-            if (statbox.SelectedItem.ToString() == "OP.GG")
-                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _playernames);
-
-            if (statbox.SelectedItem.ToString() == "PORO.GG")
-                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _riotnames);
->>>>>>> Stashed changes
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var dialogResult = MessageBox.Show("You might get a Dodge Penalty!\r\nYou also lose LP if you dodge in Ranked.\r\nDo you still want to dodge?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                button2.Enabled = false;
-                label1.Text = "Dodging Lobby...";
-                get_lcu();
-                MakeRequest( "POST", "/lol-login/v1/session/invoke?destination=lcdsServiceProxy&method=call&args=[\"\",\"teambuilder-draft\",\"quitV2\",\"\"]", true); //Updated Dodge Request - Original Credits to "mfro - LeagueClient": https://github.com/mfro/LeagueClient/blob/95c403bd582713c420090dec4f63dae284ff6598/RiotClient/RiotServices.cs#L1092 - Updated with "KebsCS KBotExt": https://github.com/KebsCS/KBotExt/blob/94d13918558799e7704bd9fa50505362cdc7d47f/KBotExt/GameTab.h#L313
-                label1.Text = "Dodged Lobby...";
-
-                waitforreset = true;
-                Resetlabel();
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.offx;
-=======
-                BackgroundImage = Resources.off3;
->>>>>>> Stashed changes
+                if (statbox.SelectedItem.ToString() == "TRACKER")
+                {
+                    Process.Start("https://tracker.gg/lol/multisearch/" + _myregion + "/" + _playernames);
+                }
+                if (statbox.SelectedItem.ToString() == "DEEPLOL")
+                {
+                    Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _playernames);
+                }
+                if (statbox.SelectedItem.ToString() == "OP.GG")
+                {
+                    Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _playernames);
+                }
+                if (statbox.SelectedItem.ToString() == "PORO.GG")
+                {
+                    Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _riotnames);
+                }
             }
-
         }
+
+            private void button3_Click(object sender, EventArgs e)
+            {
+                var dialogResult = MessageBox.Show("You might get a Dodge Penalty!\r\nYou also lose LP if you dodge in Ranked.\r\nDo you still want to dodge?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    button2.Enabled = false;
+                    label1.Text = "Dodging Lobby...";
+                    get_lcu();
+                    MakeRequest("POST", "/lol-login/v1/session/invoke?destination=lcdsServiceProxy&method=call&args=[\"\",\"teambuilder-draft\",\"quitV2\",\"\"]", true); //Updated Dodge Request - Original Credits to "mfro - LeagueClient": https://github.com/mfro/LeagueClient/blob/95c403bd582713c420090dec4f63dae284ff6598/RiotClient/RiotServices.cs#L1092 - Updated with "KebsCS KBotExt": https://github.com/KebsCS/KBotExt/blob/94d13918558799e7704bd9fa50505362cdc7d47f/KBotExt/GameTab.h#L313
+                    label1.Text = "Dodged Lobby...";
+
+                    waitforreset = true;
+                    Resetlabel();
+
+                    BackgroundImage = Resources.offx;
+
+                    BackgroundImage = Resources.off3;
+
+                }
+
+            }
 
 
         private static readonly Random Random = new Random();
@@ -337,12 +348,12 @@ namespace GetSummonerNames
 
             Text = RandomString(16);
 
-<<<<<<< Updated upstream
-=======
+
+
             statbox.Text = "DEEPLOL";
             statbox.Select(1, 1);
 
->>>>>>> Stashed changes
+
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -385,7 +396,7 @@ namespace GetSummonerNames
         {
             while (true)
             {
-<<<<<<< Updated upstream
+
                 try
                 {
                     get_lcu();
@@ -395,30 +406,30 @@ namespace GetSummonerNames
                 catch
                 {
 
-=======
-                if (!waitforreset)
-                { 
-                    try
+
+                    if (!waitforreset)
                     {
-                        get_lcu();
-                        _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
-                        Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+                        try
+                        {
+                            get_lcu();
+                            _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
+                            Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+                        }
+                        catch
+                        {
+
+                        }
                     }
-                    catch
+                    else
                     {
+                        System.Threading.Thread.Sleep(5000);
+                        waitforreset = false;
 
                     }
-                }
-                else
-                {
-                    System.Threading.Thread.Sleep(5000);
-                    waitforreset = false;
->>>>>>> Stashed changes
-                }
 
-                System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(1000);
+                }
             }
         }
     }
-
 }
