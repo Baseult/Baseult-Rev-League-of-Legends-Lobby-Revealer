@@ -263,48 +263,36 @@ namespace GetSummonerNames
         private void button2_Click(object sender, EventArgs e)
         {
             if (statbox.SelectedItem.ToString() == "U.GG")
-            {
                 Process.Start("https://u.gg/multisearch?summoners=" + _uggplayers + "&region=" + _myregion.ToLower() + "1");
 
-                if (statbox.SelectedItem.ToString() == "TRACKER")
-                {
-                    Process.Start("https://tracker.gg/lol/multisearch/" + _myregion + "/" + _uggplayers);
-                }
-                if (statbox.SelectedItem.ToString() == "DEEPLOL")
-                {
-                    Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
-                }
-                if (statbox.SelectedItem.ToString() == "OP.GG")
-                {
-                    Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
-                }
-                if (statbox.SelectedItem.ToString() == "PORO.GG")
-                {
-                    Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
-                }
-                
-                Process.Start("https://u.gg/multisearch?summoners=" + _playernames.Replace("%23", "-") + "&region=" + _myregion.ToLower() + "1");
+            if (statbox.SelectedItem.ToString() == "TRACKER")
+                Process.Start("https://tracker.gg/lol/multisearch/" + _myregion + "/" + _uggplayers);
 
-                if (statbox.SelectedItem.ToString() == "TRACKER")
-                {
-                    Process.Start("https://tracker.gg/lol/multisearch/" + _myregion + "/" + _playernames);
-                }
-                if (statbox.SelectedItem.ToString() == "DEEPLOL")
-                {
-                    Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _playernames);
-                }
-                if (statbox.SelectedItem.ToString() == "OP.GG")
-                {
-                    Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _playernames);
-                }
-                if (statbox.SelectedItem.ToString() == "PORO.GG")
-                {
-                    Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _riotnames);
-                }
-            }
+            if (statbox.SelectedItem.ToString() == "DEEPLOL")
+                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
+
+            if (statbox.SelectedItem.ToString() == "OP.GG")
+                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
+
+            if (statbox.SelectedItem.ToString() == "PORO.GG")
+                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
+
+                Process.Start("https://u.gg/multisearch?summoners=" + _playernames.Replace("%23","-") + "&region=" + _myregion.ToLower() + "1");
+
+            if (statbox.SelectedItem.ToString() == "TRACKER")
+                Process.Start("https://tracker.gg/lol/multisearch/" +_myregion + "/" +  _playernames);
+
+            if (statbox.SelectedItem.ToString() == "DEEPLOL")
+                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _playernames);
+
+            if (statbox.SelectedItem.ToString() == "OP.GG")
+                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _playernames);
+
+            if (statbox.SelectedItem.ToString() == "PORO.GG")
+                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _riotnames);
         }
 
-            private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
             {
                 var dialogResult = MessageBox.Show("You might get a Dodge Penalty!\r\nYou also lose LP if you dodge in Ranked.\r\nDo you still want to dodge?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
