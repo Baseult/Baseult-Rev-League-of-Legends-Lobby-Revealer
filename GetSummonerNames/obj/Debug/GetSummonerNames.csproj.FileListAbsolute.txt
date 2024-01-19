@@ -1,0 +1,13 @@
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.csproj.AssemblyReference.cache
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.Form1.resources
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.Properties.Resources.resources
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.csproj.GenerateResource.cache
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.csproj.CoreCompileInputs.cache
+D:\lob-rev\GetSummonerNames\bin\Debug\GetSummonerNames.exe.config
+D:\lob-rev\GetSummonerNames\bin\Debug\GetSummonerNames.exe
+D:\lob-rev\GetSummonerNames\bin\Debug\GetSummonerNames.pdb
+D:\lob-rev\GetSummonerNames\bin\Debug\Newtonsoft.Json.dll
+D:\lob-rev\GetSummonerNames\bin\Debug\Newtonsoft.Json.xml
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.csproj.CopyComplete
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.exe
+D:\lob-rev\GetSummonerNames\obj\Debug\GetSummonerNames.pdb
