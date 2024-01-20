@@ -107,17 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-    <None Include="Resources\offx.png" />
+    <None Include="Resources\off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\onx.png" />
-=======
-    <None Include="Resources\off3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\on4.png" />
->>>>>>> Stashed changes
+    <None Include="Resources\on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

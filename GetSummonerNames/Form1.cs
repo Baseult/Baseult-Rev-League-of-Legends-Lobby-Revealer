@@ -183,19 +183,12 @@ namespace GetSummonerNames
                 Console.WriteLine(player.Name);
                 Linklist.Add(count, Mobalytics + _myregion + "/" + player.Name + "/overview");
 
-<<<<<<< Updated upstream
-                _uggplayers += player.Name;
-                if (count != totalPlayers) // Check if it's not the last iteration
-                {
-                    _uggplayers += ", ";
-=======
                 _riotnames += player.Name;
                 _playernames += player.game_name + "%23" + player.game_tag;
                 if (count != totalPlayers) // Check if it's not the last iteration
                 {
                     _riotnames += ", ";
                     _playernames += ", ";
->>>>>>> Stashed changes
                 }
             }
 
@@ -205,22 +198,14 @@ namespace GetSummonerNames
                 linkLabel1.Enabled = true;
 
                 label1.Text = "Found Players in Lobby...";
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.onx;
-=======
-                BackgroundImage = Resources.on3;
->>>>>>> Stashed changes
+                BackgroundImage = Resources.on;
                 button2.Enabled = true;
                 button3.Enabled = true;
             }
             else
             {
                 label1.Text = "Waiting for Lobby...";
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.offx;
-=======
-                BackgroundImage = Resources.off3;
->>>>>>> Stashed changes
+                BackgroundImage = Resources.off;
                 button2.Enabled = false;
                 button3.Enabled = false;
             }
@@ -262,21 +247,6 @@ namespace GetSummonerNames
         private void button2_Click(object sender, EventArgs e)
         {
             if (statbox.SelectedItem.ToString() == "U.GG")
-<<<<<<< Updated upstream
-                Process.Start("https://u.gg/multisearch?summoners=" + _uggplayers + "&region=" + _myregion.ToLower() + "1");
-
-            if (statbox.SelectedItem.ToString() == "TRACKER")
-                Process.Start("https://tracker.gg/lol/multisearch/" +_myregion + "/" +  _uggplayers);
-
-            if (statbox.SelectedItem.ToString() == "DEEPLOL")
-                Process.Start("https://www.deeplol.gg/multi/" + _myregion + "/" + _uggplayers);
-
-            if (statbox.SelectedItem.ToString() == "OP.GG")
-                Process.Start("https://www.op.gg/multisearch/" + _myregion.ToLower() + "?summoners=" + _uggplayers);
-
-            if (statbox.SelectedItem.ToString() == "PORO.GG")
-                Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _uggplayers);
-=======
                 Process.Start("https://u.gg/multisearch?summoners=" + _playernames.Replace("%23","-") + "&region=" + _myregion.ToLower() + "1");
 
             if (statbox.SelectedItem.ToString() == "TRACKER")
@@ -290,7 +260,6 @@ namespace GetSummonerNames
 
             if (statbox.SelectedItem.ToString() == "PORO.GG")
                 Process.Start("https://poro.gg/multi?region=" + _myregion + "&q=" + _riotnames);
->>>>>>> Stashed changes
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -306,11 +275,7 @@ namespace GetSummonerNames
 
                 waitforreset = true;
                 Resetlabel();
-<<<<<<< Updated upstream
-                BackgroundImage = Resources.offx;
-=======
-                BackgroundImage = Resources.off3;
->>>>>>> Stashed changes
+                BackgroundImage = Resources.off;
             }
 
         }
@@ -337,12 +302,9 @@ namespace GetSummonerNames
 
             Text = RandomString(16);
 
-<<<<<<< Updated upstream
-=======
             statbox.Text = "DEEPLOL";
             statbox.Select(1, 1);
 
->>>>>>> Stashed changes
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -385,17 +347,7 @@ namespace GetSummonerNames
         {
             while (true)
             {
-<<<<<<< Updated upstream
-                try
-                {
-                    get_lcu();
-                    _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
-                    Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
-                }
-                catch
-                {
 
-=======
                 if (!waitforreset)
                 { 
                     try
@@ -413,7 +365,6 @@ namespace GetSummonerNames
                 {
                     System.Threading.Thread.Sleep(5000);
                     waitforreset = false;
->>>>>>> Stashed changes
                 }
 
                 System.Threading.Thread.Sleep(1000);
