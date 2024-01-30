@@ -354,7 +354,7 @@ namespace GetSummonerNames
                     {
                         get_lcu();
                         _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
-                        Getplayers(MakeRequest("GET", "/chat/v5/participants/champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+                        Getplayers(MakeRequest("GET", "/chat/v5/participants/lol-champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
                     }
                     catch
                     {
