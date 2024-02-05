@@ -179,8 +179,21 @@ namespace GetSummonerNames
             foreach (var player in deserialized.Participants)
             {
                 count++;
-                PlayerList.Add(count, player.Name);
-                Console.WriteLine(player.Name);
+                if (player.Name.Length > 0)
+                {
+                    PlayerList.Add(count, player.Name);
+                }
+                else if (player.game_name.Length > 0)
+                {
+                    PlayerList.Add(count, player.game_name);
+                }
+                else
+                {
+                    PlayerList.Add(count, "not found");
+                }
+                
+                Console.WriteLine("name: " + player.Name);
+                Console.WriteLine("gamename: " + player.game_name);
                 Linklist.Add(count, Mobalytics + _myregion + "/" + player.Name + "/overview");
 
                 _riotnames += player.Name;
@@ -294,7 +307,7 @@ namespace GetSummonerNames
         {
             CheckForIllegalCrossThreadCalls = false;
 
-            var dialogResult = MessageBox.Show("Hey, there might be an update for my program.\r\n\r\nIf there is, you can download it from Unknowncheats or my Discord. To check out for a possible update and get redirected to UnknownCheats, press Yes.\r\n\r\n(If you obtained this program from a source other than UnknownCheats or my Discord server, it was not uploaded by me.)", "Baseult-Rev Information!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var dialogResult = MessageBox.Show("Do you want to check for a new update?\r\n\r\nIf there is one, you can download it from Unknowncheats or compile it from my GitHub.\r\n\r\nTo check for a possible update and get redirected to UnknownCheats, press Yes.\r\n\r\n(If you obtained this program from a source other than UnknownCheats or my GitHub, it was not uploaded by me).", "Baseult-Rev Information!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
                 Process.Start("https://www.unknowncheats.me/forum/league-of-legends/523020-ranked-12-22-reveal-teammates-lobby.html");
@@ -354,7 +367,7 @@ namespace GetSummonerNames
                     {
                         get_lcu();
                         _myregion = Getregion(MakeRequest("GET", "/riotclient/region-locale" /*Public Riot API request*/, true));
-                        Getplayers(MakeRequest("GET", "/chat/v5/participants/lol-champ-select" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
+                        Getplayers(MakeRequest("GET", "/chat/v5/participants" /*Found Request in various Logs C:\Riot Games\League of Legends\Logs\LeagueClient*/, false));
                     }
                     catch
                     {
